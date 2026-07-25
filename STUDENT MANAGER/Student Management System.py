@@ -13,7 +13,7 @@ def menu(studentlist):
         choice=int(input("Enter your choice: \n"))
         if choice==1:
             print("""Choice is to add student:
-            1)Enter Student ID: 
+            1)Enter Student ID (only integer): 
             2)Enter Student Name: 
             3)Age: 
             4)Department: 
@@ -31,6 +31,9 @@ def menu(studentlist):
                 "Department":sdept,
                 "CGPA":scgpa
             }
+            for student in studentlist:
+                if student["ID"]==sid:
+                    print("This student ID Already exists, duplicates not allowed")
             studentlist.append(studentdict)
         elif choice==2:
             if len(studentlist)==0:
@@ -51,7 +54,13 @@ def menu(studentlist):
             for student in studentlist:
                 idval=student["ID"]
                 if idval==idsearch:
-                    print(student)
+                    print("-------------------------")
+                    print("ID         :", student["ID"])
+                    print("Name       :", student["Name"])
+                    print("Age        :", student["Age"])
+                    print("Department :", student["Department"])
+                    print("CGPA       :", student["CGPA"])
+                    print("-------------------------")
                     found=True
                     break
             if not found:
@@ -96,3 +105,4 @@ def menu(studentlist):
             break
         else:
             print("invalid Choice Entered")
+menu(studentlist)
