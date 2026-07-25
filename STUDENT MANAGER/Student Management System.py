@@ -31,9 +31,16 @@ def menu(studentlist):
                 "Department":sdept,
                 "CGPA":scgpa
             }
+            found=False
             for student in studentlist:
                 if student["ID"]==sid:
-                    print("This student ID Already exists, duplicates not allowed")
+                    found=True
+                    break
+            if found:
+                print("duplicate ID not allowed")
+                break
+            else:
+                print("New ID allowed")
             studentlist.append(studentdict)
         elif choice==2:
             if len(studentlist)==0:
@@ -66,13 +73,20 @@ def menu(studentlist):
             if not found:
               print("id not found")
         elif choice==4:
-            updateid=int(input("Enter the id of student u want to delete"))
+            updateid=int(input("Enter the id of student u want to update"))
             found=False
             for student in studentlist:
                 updateval=student.get("ID")
                 if updateval==updateid:
                     found=True
-                    print("student found: ", student)
+                    print("student found: ")
+                    print("-------------------------")
+                    print("ID         :", student["ID"])
+                    print("Name       :", student["Name"])
+                    print("Age        :", student["Age"])
+                    print("Department :", student["Department"])
+                    print("CGPA       :", student["CGPA"])                        
+                    print("-------------------------")
                     print("""Enter:
                     1)New Age
                     2)New Department
@@ -88,7 +102,7 @@ def menu(studentlist):
             if not found:
                 print("id not found")
         elif choice==5:
-            deleteid=int(input("Enter the id of student u want to update"))
+            deleteid=int(input("Enter the id of student u want to delete"))
             found=False
             for student in studentlist:
                 deleteval=student.get("ID")
