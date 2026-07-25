@@ -1,4 +1,12 @@
 studentlist=[]
+def display_student(student):
+    print("-------------------------")
+    print("ID         :", student["ID"])
+    print("Name       :", student["Name"])
+    print("Age        :", student["Age"])
+    print("Department :", student["Department"])
+    print("CGPA       :", student["CGPA"])
+    print("-------------------------")
 def menu(studentlist):
     while True:
         menuitems="""Options Available are:
@@ -38,36 +46,22 @@ def menu(studentlist):
                     break
             if found:
                 print("duplicate ID not allowed")
-                break
             else:
-                print("New ID allowed")
-            studentlist.append(studentdict)
+                studentlist.append(studentdict)
         elif choice==2:
             if len(studentlist)==0:
                 print("No students in the system")
             else:
                 print("Students in the system are:")
                 for student in studentlist:
-                    print("-------------------------")
-                    print("ID         :", student["ID"])
-                    print("Name       :", student["Name"])
-                    print("Age        :", student["Age"])
-                    print("Department :", student["Department"])
-                    print("CGPA       :", student["CGPA"])
-                    print("-------------------------")
+                    display_student(student)
         elif choice==3:
             idsearch=int(input("enter the id you want to search for:"))
             found=False
             for student in studentlist:
                 idval=student["ID"]
                 if idval==idsearch:
-                    print("-------------------------")
-                    print("ID         :", student["ID"])
-                    print("Name       :", student["Name"])
-                    print("Age        :", student["Age"])
-                    print("Department :", student["Department"])
-                    print("CGPA       :", student["CGPA"])
-                    print("-------------------------")
+                    display_student(student)
                     found=True
                     break
             if not found:
@@ -79,14 +73,7 @@ def menu(studentlist):
                 updateval=student.get("ID")
                 if updateval==updateid:
                     found=True
-                    print("student found: ")
-                    print("-------------------------")
-                    print("ID         :", student["ID"])
-                    print("Name       :", student["Name"])
-                    print("Age        :", student["Age"])
-                    print("Department :", student["Department"])
-                    print("CGPA       :", student["CGPA"])                        
-                    print("-------------------------")
+                    display_student(student)
                     print("""Enter:
                     1)New Age
                     2)New Department
